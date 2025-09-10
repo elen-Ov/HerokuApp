@@ -1,3 +1,4 @@
+using HerokuApp.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -10,6 +11,7 @@ public class HerokuTests
     private NavigationManager _navigationManager;
     private AddRemoveHelper _addRemove;
     private CheckboxesHelper _checkboxes;
+    private DropdownHelper _dropdown;
     [SetUp]
     public void Setup()
     {
@@ -17,6 +19,7 @@ public class HerokuTests
         _addRemove = new AddRemoveHelper(_driver);
         _checkboxes = new CheckboxesHelper(_driver);
         _navigationManager = new NavigationManager(_driver);
+        _dropdown = new DropdownHelper(_driver);
     }
     [Test]
     public void AddRemoveElements_QuantityTest()
@@ -54,6 +57,37 @@ public class HerokuTests
         // Assert
         Assert.That(initialState, Is.True);
         Assert.That(finalState, Is.False, "Второй чекбокс должен быть снят.");
+    }
+
+    [Test]
+    public void Dropdown_DropdownQuantityTest()
+    {
+        // Arrange
+        _dropdown.OpenDropdownPage();
+        // Act
+        var actualOptionsQuantity = _dropdown.CountDropDownOptions();
+        // Assert
+        Assert.That(actualOptionsQuantity, Is.EqualTo(2));
+    }
+    [Test]
+    public void Dropdown_DropdownOptionSelectionTest()
+    {
+        // Arrange
+        _dropdown.OpenDropdownPage();
+        // Act
+        var selectedOption = _dropdown.ChooseDropDownOption(1); // либо 2 для второй опции
+        // Assert
+        Assert.That(selectedOption, Is.True, "Dropdown с option 1/2 должен быть выбран");
+    }
+    [Test]
+    public void Dropdown_DropdownDisabledCannotBeSelectedTest()
+    {
+        // Arrange
+        _dropdown.OpenDropdownPage();
+        // Act
+        var selectedOption = _dropdown.ChooseDropDownOption(0); 
+        // Assert
+        Assert.That(selectedOption, Is.False, "надпись Please select an option выбрать нельзя");
     }
     [TearDown]
     public void TearDown()

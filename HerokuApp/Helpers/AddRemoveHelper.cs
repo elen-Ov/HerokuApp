@@ -1,7 +1,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace HerokuApp;
+namespace HerokuApp.Helpers;
 
 public class AddRemoveHelper
 {
