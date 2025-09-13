@@ -3,18 +3,18 @@ namespace HerokuApp.Tests;
 public class DropdownPageTests : BaseTest
 {
     [Test]
-    public void Dropdown_DropdownQuantityTest()
+    public void Dropdown_DropdownOptionsQuantityTest()
     {
         // Arrange
         DropdownPageHelper.OpenDropdownPage();
         // Act
         var actualOptionsQuantity = DropdownPageHelper.CountDropDownOptions();
         // Assert
-        Assert.That(actualOptionsQuantity, Is.EqualTo(2));
+        Assert.That(actualOptionsQuantity, Is.EqualTo(2), "Всего две опции, Option 1 и Option 2");
     }
     
     [Test]
-    public void Dropdown_DropdownOptionSelectionTest()
+    public void Dropdown_DropdownOptionsSelectionTest()
     {
         // Arrange
         DropdownPageHelper.OpenDropdownPage();
@@ -32,6 +32,6 @@ public class DropdownPageTests : BaseTest
         // Act
         var selectedOption = DropdownPageHelper.ChooseDropDownOption(0); 
         // Assert
-        Assert.That(selectedOption, Is.False, "надпись Please select an option выбрать нельзя");
+        Assert.That(selectedOption, Is.False, "Надпись Please select an option выбрать нельзя");
     }
 }

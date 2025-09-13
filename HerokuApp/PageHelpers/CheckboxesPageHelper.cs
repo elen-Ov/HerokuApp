@@ -4,11 +4,6 @@ namespace HerokuApp.PageHelpers;
 
 public class CheckboxesPageHelper : BasePage
 {
-    // объявляем конструктор
-    // параметр для управления веб драйвером
-    // :base(driver) - вызов конструктора базового родительского класса
-    // {} пустое тело конструктора, означает что в этом классе нет дополнительной логики инициализации
-    // всё делегируется базовому классу
     public CheckboxesPageHelper(IWebDriver driver):base(driver) {}
     public void OpenCheckboxesPage()
     {

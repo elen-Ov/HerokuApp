@@ -1,6 +1,6 @@
 namespace HerokuApp.Tests;
 
-public class AddRemovePageTests : BaseTest
+public class AddRemoveElementsPageTests : BaseTest
 {
     [Test]
     public void AddRemoveElements_QuantityTest()

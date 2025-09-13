@@ -10,6 +10,7 @@ public class BaseTest
     protected AddRemovePageHelper AddRemovePageHelper;
     protected CheckboxesPageHelper CheckboxesPageHelper;
     protected DropdownPageHelper DropdownPageHelper;
+    protected InputsPageHelper InputsPageHelper;
     
     [SetUp]
     public void Setup()
@@ -18,6 +19,7 @@ public class BaseTest
         AddRemovePageHelper = new AddRemovePageHelper(_driver);
         CheckboxesPageHelper = new CheckboxesPageHelper(_driver);
         DropdownPageHelper = new DropdownPageHelper(_driver);
+        InputsPageHelper = new InputsPageHelper(_driver);
     }
     
     [TearDown]

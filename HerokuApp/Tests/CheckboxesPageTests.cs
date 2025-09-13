@@ -26,7 +26,7 @@ public class CheckboxesPageTests : BaseTest
         CheckboxesPageHelper.UncheckBox(1);
         bool finalState = CheckboxesPageHelper.IsCheckboxChecked(1);
         // Assert
-        Assert.That(initialState, Is.True);
+        Assert.That(initialState, Is.True, "Начальное состояние второго чекбокса - отмечен");
         Assert.That(finalState, Is.False, "Второй чекбокс должен быть снят.");
     }
 }
