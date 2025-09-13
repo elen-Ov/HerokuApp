@@ -12,6 +12,7 @@ public class BaseTest
     protected DropdownPageHelper DropdownPageHelper;
     protected InputsPageHelper InputsPageHelper;
     protected SortableDataTablesPageHelper SortableDataTablesPageHelper;
+    protected TyposPageHelper TyposPageHelper;
     
     [SetUp]
     public void Setup()
@@ -22,6 +23,7 @@ public class BaseTest
         DropdownPageHelper = new DropdownPageHelper(_driver);
         InputsPageHelper = new InputsPageHelper(_driver);
         SortableDataTablesPageHelper = new SortableDataTablesPageHelper(_driver);
+        TyposPageHelper = new TyposPageHelper(_driver);
     }
     
     [TearDown]
