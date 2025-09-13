@@ -1,18 +1,18 @@
 using OpenQA.Selenium;
 
-namespace HerokuApp;
+namespace HerokuApp.PageHelpers;
 
-public class NavigationManager
+public class BasePage
 {
-    private readonly IWebDriver _driver;
-    // передаём драйвер извне (через конструктор) для того чтобы использовать один
-    public NavigationManager(IWebDriver driver)
+    protected IWebDriver _driver;
+
+    protected BasePage(IWebDriver driver)
     {
         _driver = driver;
         _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
     }
     // открытие сайта
-    public void OpenWelcomePage()
+    protected void OpenWelcomePage()
     {
         _driver.Navigate().GoToUrl("http://the-internet.herokuapp.com/");
         _driver.Manage().Window.Maximize();
