@@ -11,6 +11,7 @@ public class BaseTest
     protected CheckboxesPageHelper CheckboxesPageHelper;
     protected DropdownPageHelper DropdownPageHelper;
     protected InputsPageHelper InputsPageHelper;
+    protected SortableDataTablesPageHelper SortableDataTablesPageHelper;
     
     [SetUp]
     public void Setup()
@@ -20,6 +21,7 @@ public class BaseTest
         CheckboxesPageHelper = new CheckboxesPageHelper(_driver);
         DropdownPageHelper = new DropdownPageHelper(_driver);
         InputsPageHelper = new InputsPageHelper(_driver);
+        SortableDataTablesPageHelper = new SortableDataTablesPageHelper(_driver);
     }
     
     [TearDown]
