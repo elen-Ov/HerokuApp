@@ -14,6 +14,7 @@ public class BaseTest
     protected SortableDataTablesPageHelper SortableDataTablesPageHelper;
     protected TyposPageHelper TyposPageHelper;
     protected NotificationMessagesPageHelper NotificationMessagesPageHelper;
+    protected HoversPageHelper HoversPageHelper;
     
     [SetUp]
     public void Setup()
@@ -26,6 +27,7 @@ public class BaseTest
         SortableDataTablesPageHelper = new SortableDataTablesPageHelper(_driver);
         TyposPageHelper = new TyposPageHelper(_driver);
         NotificationMessagesPageHelper = new NotificationMessagesPageHelper(_driver);
+        HoversPageHelper = new HoversPageHelper(_driver);
     }
     
     [TearDown]
