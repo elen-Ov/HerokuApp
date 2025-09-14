@@ -13,6 +13,7 @@ public class BaseTest
     protected InputsPageHelper InputsPageHelper;
     protected SortableDataTablesPageHelper SortableDataTablesPageHelper;
     protected TyposPageHelper TyposPageHelper;
+    protected NotificationMessagesPageHelper NotificationMessagesPageHelper;
     
     [SetUp]
     public void Setup()
@@ -24,6 +25,7 @@ public class BaseTest
         InputsPageHelper = new InputsPageHelper(_driver);
         SortableDataTablesPageHelper = new SortableDataTablesPageHelper(_driver);
         TyposPageHelper = new TyposPageHelper(_driver);
+        NotificationMessagesPageHelper = new NotificationMessagesPageHelper(_driver);
     }
     
     [TearDown]
