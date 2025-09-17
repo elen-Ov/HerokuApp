@@ -8,8 +8,8 @@ public class DropdownPageHelper : BasePage
     public void OpenDropdownPage()
     {
        OpenWelcomePage();
-        _driver.FindElement(By.XPath("//a[@href='/dropdown' and text()='Dropdown']")).Click();
-        Thread.Sleep(2000);
+        _driver.FindElement(By.XPath("//a[@href='/dropdown']")).Click();
+        //Thread.Sleep(2000);
     }
     
     public int CountDropDownOptions()
@@ -29,7 +29,7 @@ public class DropdownPageHelper : BasePage
             return false;  // disabled опция не может быть выбрана
         }
         selectedOption.Click();
-        Thread.Sleep(2000);
+        //Thread.Sleep(2000);
         return selectedOption.Selected;
     }
 }

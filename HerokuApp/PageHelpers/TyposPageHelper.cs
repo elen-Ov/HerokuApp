@@ -10,7 +10,7 @@ public class TyposPageHelper : BasePage
     {
         OpenWelcomePage();
         _driver.FindElement(By.XPath("//a[@href='/typos']")).Click();
-        Thread.Sleep(2000);
+        //Thread.Sleep(2000);
     }
 
     public string GetText()

@@ -36,7 +36,7 @@ public class BaseTest
         if (_driver != null)
         {
             _driver.Quit();
-            _driver.Dispose(); // IWebDriver (и его реализации, как ChromeDriver) реализуют IDisposable
+            _driver.Dispose(); // IWebDriver и его реализации, как например ChromeDriver реализуют IDisposable
             _driver = null;
         }
     }

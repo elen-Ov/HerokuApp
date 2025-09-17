@@ -33,7 +33,7 @@ public class InputsPageTests : BaseTest
         // Act
         InputsPageHelper.InputLetters();
         // Assert
-        Assert.That(InputsPageHelper.CheckInputOfLetters(), Is.True, "Ввод букв невозможен");
+        Assert.That(InputsPageHelper.CheckInputOfLettersIsImpossible(), Is.True, "Ввод букв невозможен");
     }
     
     [Test]
@@ -44,6 +44,6 @@ public class InputsPageTests : BaseTest
         // Act
         InputsPageHelper.InputSpecialChars();
         // Assert
-        Assert.That(InputsPageHelper.CheckInputOfSpecialChars(), Is.True, "Ввод спец символов невозможен");
+        Assert.That(InputsPageHelper.CheckInputOfSpecialCharsIsImpossible(), Is.True, "Ввод спец символов невозможен");
     }
 }

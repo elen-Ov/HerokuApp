@@ -9,7 +9,7 @@ public class SortableDataTablesPageHelper : BasePage
     {
         OpenWelcomePage();
         _driver.FindElement(By.XPath("//a[@href='/tables']")).Click();
-        Thread.Sleep(2000);
+        //Thread.Sleep(2000);
     }
     public List<string> GetTablesLineInfo()
     { 

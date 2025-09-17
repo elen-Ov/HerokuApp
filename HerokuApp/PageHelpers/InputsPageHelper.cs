@@ -10,7 +10,7 @@ public class InputsPageHelper : BasePage
     {
         OpenWelcomePage();
         _driver.FindElement(By.XPath("//a[@href='/inputs']")).Click();
-        Thread.Sleep(2000);
+        //Thread.Sleep(2000);
     }
 
     public void ClickArrowUp()
@@ -51,7 +51,7 @@ public class InputsPageHelper : BasePage
         inputLine.SendKeys("aBqWhg");
     }
     
-    public bool CheckInputOfLetters()
+    public bool CheckInputOfLettersIsImpossible()
     {
         var inputLine = _driver.FindElement(By.CssSelector("input[type='number']"));
         var check = inputLine.GetAttribute("value");
@@ -66,7 +66,7 @@ public class InputsPageHelper : BasePage
         inputLine.SendKeys("~!@#$%^&*()_+{}|:?><");
     }
     
-    public bool CheckInputOfSpecialChars()
+    public bool CheckInputOfSpecialCharsIsImpossible()
     {
         var inputLine = _driver.FindElement(By.CssSelector("input[type='number']"));
         var check = inputLine.GetAttribute("value");

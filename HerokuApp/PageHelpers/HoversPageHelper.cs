@@ -10,14 +10,14 @@ public class HoversPageHelper : BasePage
     {
         OpenWelcomePage();
         _driver.FindElement(By.XPath("//a[@href='/hovers']")).Click();
-        Thread.Sleep(2000);
+        //Thread.Sleep(2000);
     }
     
     public bool FindProfile(int index)
     {
         var profile = _driver.FindElement(By.XPath($"//div[@id='content']/div/div[{index}]"));
         _actions.MoveToElement(profile).Perform(); // навести курсор
-        Thread.Sleep(2000);
+        //Thread.Sleep(2000);
         return true;
     }
 

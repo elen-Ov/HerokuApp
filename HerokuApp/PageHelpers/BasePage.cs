@@ -17,9 +17,8 @@ public class BasePage
     // открытие сайта
     protected void OpenWelcomePage()
     {
-        _driver.Navigate().GoToUrl("http://the-internet.herokuapp.com/");
+        _driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/");
         _driver.Manage().Window.Maximize();
-        //_driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         // для проверки
         //Thread.Sleep(2000);
     }

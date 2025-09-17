@@ -8,7 +8,7 @@ public class CheckboxesPageHelper : BasePage
     public void OpenCheckboxesPage()
     {
         OpenWelcomePage();
-        _driver.FindElement(By.XPath("//a[@href='/checkboxes' and text()='Checkboxes']")).Click();
+        _driver.FindElement(By.XPath("//a[@href='/checkboxes']")).Click();
         Thread.Sleep(2000);
     }
     
