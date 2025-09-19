@@ -1,18 +1,23 @@
+using HerokuApp.Pages;
+using HerokuApp.Services;
+
 namespace HerokuApp.Tests;
 
-public class CheckboxesPageTests : BaseTest
+public class CheckboxesPageTests
 {
+    private readonly CheckboxesPage _checkboxesPage = new CheckboxesPage();
+    
     [Test]
     public void CheckBoxState_CheckedStateTest()
     {
         // Arrange
-        CheckboxesPageHelper.OpenCheckboxesPage();
+        _checkboxesPage.OpenCheckboxesPage();
         // Act
-        bool initialState = CheckboxesPageHelper.IsCheckboxChecked(0);
-        CheckboxesPageHelper.MarkBoxAsChecked(0);
-        bool finalState = CheckboxesPageHelper.IsCheckboxChecked(0);
+        bool initialState = _checkboxesPage.IsCheckboxChecked(0);
+        _checkboxesPage.MarkBoxAsChecked(0);
+        bool finalState = _checkboxesPage.IsCheckboxChecked(0);
         // Assert
-        Assert.That(initialState, Is.False);
+        Assert.That(initialState, Is.False, "Начальное состояние первого чекбокса - снят.");
         Assert.That(finalState, Is.True, "Первый чекбокс должен быть отмечен.");
     }
     
@@ -20,13 +25,19 @@ public class CheckboxesPageTests : BaseTest
     public void CheckBoxState_UncheckedStateTest()
     {
         // Arrange
-        CheckboxesPageHelper.OpenCheckboxesPage();
+        _checkboxesPage.OpenCheckboxesPage();
         // Act
-        bool initialState = CheckboxesPageHelper.IsCheckboxChecked(1);
-        CheckboxesPageHelper.UncheckBox(1);
-        bool finalState = CheckboxesPageHelper.IsCheckboxChecked(1);
+        bool initialState = _checkboxesPage.IsCheckboxChecked(1);
+        _checkboxesPage.UncheckBox(1);
+        bool finalState = _checkboxesPage.IsCheckboxChecked(1);
         // Assert
-        Assert.That(initialState, Is.True, "Начальное состояние второго чекбокса - отмечен");
+        Assert.That(initialState, Is.True, "Начальное состояние второго чекбокса - отмечен.");
         Assert.That(finalState, Is.False, "Второй чекбокс должен быть снят.");
+    }
+    
+    [OneTimeTearDown]
+    public void OneTimeTeardown() 
+    {
+        DriverManager.CloseBrowser();
     }
 }

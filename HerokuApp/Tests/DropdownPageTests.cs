@@ -1,14 +1,18 @@
+using HerokuApp.Pages;
+using HerokuApp.Services;
+
 namespace HerokuApp.Tests;
 
-public class DropdownPageTests : BaseTest
+public class DropdownPageTests
 {
+    private readonly DropdownPage _dropdownPage = new DropdownPage();
     [Test]
     public void Dropdown_DropdownOptionsQuantityTest()
     {
         // Arrange
-        DropdownPageHelper.OpenDropdownPage();
+        _dropdownPage.OpenDropdownPage();
         // Act
-        var actualOptionsQuantity = DropdownPageHelper.CountDropDownOptions();
+        var actualOptionsQuantity = _dropdownPage.CountDropDownOptions();
         // Assert
         Assert.That(actualOptionsQuantity, Is.EqualTo(2), "Всего две опции, Option 1 и Option 2");
     }
@@ -17,9 +21,9 @@ public class DropdownPageTests : BaseTest
     public void Dropdown_DropdownOptionsSelectionTest()
     {
         // Arrange
-        DropdownPageHelper.OpenDropdownPage();
+        _dropdownPage.OpenDropdownPage();
         // Act
-        var selectedOption = DropdownPageHelper.ChooseDropDownOption(1); // либо 2 для второй опции
+        var selectedOption = _dropdownPage.ChooseDropDownOption(1); // либо 2 для второй опции
         // Assert
         Assert.That(selectedOption, Is.True, "Dropdown с option 1||2 должен быть выбран");
     }
@@ -28,10 +32,16 @@ public class DropdownPageTests : BaseTest
     public void Dropdown_DropdownDisabledCannotBeSelectedTest()
     {
         // Arrange
-        DropdownPageHelper.OpenDropdownPage();
+        _dropdownPage.OpenDropdownPage();
         // Act
-        var selectedOption = DropdownPageHelper.ChooseDropDownOption(0); 
+        var selectedOption = _dropdownPage.ChooseDropDownOption(0); 
         // Assert
         Assert.That(selectedOption, Is.False, "Надпись Please select an option выбрать нельзя");
+    }
+    
+    [OneTimeTearDown]
+    public void OneTimeTeardown() 
+    {
+        DriverManager.CloseBrowser();
     }
 }

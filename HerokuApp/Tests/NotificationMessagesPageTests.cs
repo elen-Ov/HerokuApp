@@ -1,20 +1,28 @@
-using HerokuApp.PageHelpers;
+using HerokuApp.Pages;
+using HerokuApp.Services;
 
 namespace HerokuApp.Tests;
 
-public class NotificationMessagesPageTests : BaseTest
+public class NotificationMessagesPageTests
 {
+    private readonly NotificationMessagesPage _notificationMessagesPage = new NotificationMessagesPage();
+    
     [Test]
     public void NotificationMessages_MessagesTextValueTest()
     {
         // Arrange
         var expectedMessageText1 = "Action unsuccesful, please try again\n×";
         var expectedMessageText2 = "Action successful\n×";
-        NotificationMessagesPageHelper.OpenNotificationMessagesPage();
+        _notificationMessagesPage.OpenNotificationMessagesPage();
         // Act
-        var actualText = NotificationMessagesPageHelper.GetText();
+        var actualText = _notificationMessagesPage.GetNotificationMessageText();
         // Assert
         Assert.That(actualText, Is.AnyOf(expectedMessageText1, expectedMessageText2), $"Сообщение должно содержать текст: '{expectedMessageText1}' либо текст: '{expectedMessageText2}', но получено: '{actualText}'.");
-
+    }
+    
+    [OneTimeTearDown]
+    public void OneTimeTeardown() 
+    {
+        DriverManager.CloseBrowser();
     }
 }

@@ -1,35 +1,32 @@
 using OpenQA.Selenium;
 
-namespace HerokuApp.PageHelpers;
+namespace HerokuApp.Pages;
 
-public class DropdownPageHelper : BasePage
+public class DropdownPage : BasePage
 {
-    public DropdownPageHelper(IWebDriver driver):base(driver) {}
     public void OpenDropdownPage()
     {
-       OpenWelcomePage();
-        _driver.FindElement(By.XPath("//a[@href='/dropdown']")).Click();
-        //Thread.Sleep(2000);
+        OpenWelcomePage();
+        Driver.FindElement(By.XPath("//a[@href='/dropdown']")).Click();
     }
     
     public int CountDropDownOptions()
     {
-        var dropdown = _driver.FindElement(By.Id("dropdown"));
+        var dropdown = Driver.FindElement(By.Id("dropdown"));
         var options = dropdown.FindElements(By.XPath("//option[contains(text(),'Option')]"));
         return options.Count;
     }
     
     public bool ChooseDropDownOption(int index)
     {
-        var dropdown = _driver.FindElement(By.Id("dropdown"));
+        var dropdown = Driver.FindElement(By.Id("dropdown"));
         var options = dropdown.FindElements(By.TagName("option"));
         var selectedOption = options[index];
         if (selectedOption.GetAttribute("disabled") != null)
         {
-            return false;  // disabled опция не может быть выбрана
+            return false;
         }
         selectedOption.Click();
-        //Thread.Sleep(2000);
         return selectedOption.Selected;
     }
 }

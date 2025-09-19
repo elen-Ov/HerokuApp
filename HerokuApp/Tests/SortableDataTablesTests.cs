@@ -1,7 +1,12 @@
+using HerokuApp.Pages;
+using HerokuApp.Services;
+
 namespace HerokuApp.Tests;
 
-public class SortableDataTablesTests : BaseTest
+public class SortableDataTablesTests
 {
+    private readonly SortableDataTablesPage _sortableDataTablesPage = new SortableDataTablesPage();
+    
     [Test]
     public void SortableDataTable_TableFirstLineValueTest()
     {
@@ -10,10 +15,16 @@ public class SortableDataTablesTests : BaseTest
         {
             "Smith", "John", "jsmith@gmail.com", "$50.00", "http://www.jsmith.com"
         };
-        SortableDataTablesPageHelper.OpenSortableDataTablesPage();
+        _sortableDataTablesPage.OpenSortableDataTablesPage();
         // Act
-        var actualPersonalData = SortableDataTablesPageHelper.GetTablesLineInfo();
+        var actualPersonalData = _sortableDataTablesPage.GetTablesLineInfo();
         // Assert
         Assert.That(actualPersonalData, Is.EquivalentTo(expectedPersonalData), "персональные данные не совпадают");
+    }
+    
+    [OneTimeTearDown]
+    public void OneTimeTeardown() 
+    {
+        DriverManager.CloseBrowser();
     }
 }

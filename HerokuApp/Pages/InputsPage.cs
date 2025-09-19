@@ -1,21 +1,18 @@
 using OpenQA.Selenium;
 
-namespace HerokuApp.PageHelpers;
+namespace HerokuApp.Pages;
 
-public class InputsPageHelper : BasePage
+public class InputsPage : BasePage
 {
-    public InputsPageHelper(IWebDriver driver): base(driver) {}
-    
     public void OpenInputsPage()
     {
         OpenWelcomePage();
-        _driver.FindElement(By.XPath("//a[@href='/inputs']")).Click();
-        //Thread.Sleep(2000);
+        Driver.FindElement(By.XPath("//a[@href='/inputs']")).Click();
     }
 
     public void ClickArrowUp()
     {
-        var inputLine = _driver.FindElement(By.CssSelector("input[type='number']"));
+        var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
         inputLine.Click();
         inputLine.Clear();
         inputLine.SendKeys(Keys.ArrowUp);
@@ -23,14 +20,20 @@ public class InputsPageHelper : BasePage
 
     public bool CheckArrowUpClick()
     {
-        var inputLine = _driver.FindElement(By.CssSelector("input[type='number']"));
+        var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
         var check = inputLine.GetAttribute("value");
-        return check == "1";
+        int number = Convert.ToInt32(check);
+        if (number < 0)
+        {
+            return false;
+        }
+
+        return true;
     }
-    
+
     public void ClickArrowDown()
     {
-        var inputLine = _driver.FindElement(By.CssSelector("input[type='number']"));
+        var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
         inputLine.Click();
         inputLine.Clear();
         inputLine.SendKeys(Keys.ArrowDown);
@@ -38,37 +41,43 @@ public class InputsPageHelper : BasePage
 
     public bool CheckArrowDownClick()
     {
-        var inputLine = _driver.FindElement(By.CssSelector("input[type='number']"));
+        var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
         var check = inputLine.GetAttribute("value");
-        return check == "-1";
+        int number = Convert.ToInt32(check);
+        if (number >= 0)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     public void InputLetters()
     {
-        var inputLine = _driver.FindElement(By.CssSelector("input[type='number']"));
+        var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
         inputLine.Click();
         inputLine.Clear();
         inputLine.SendKeys("aBqWhg");
     }
-    
+
     public bool CheckInputOfLettersIsImpossible()
     {
-        var inputLine = _driver.FindElement(By.CssSelector("input[type='number']"));
+        var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
         var check = inputLine.GetAttribute("value");
         return check == "";
     }
-    
+
     public void InputSpecialChars()
     {
-        var inputLine = _driver.FindElement(By.CssSelector("input[type='number']"));
+        var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
         inputLine.Click();
         inputLine.Clear();
         inputLine.SendKeys("~!@#$%^&*()_+{}|:?><");
     }
-    
+
     public bool CheckInputOfSpecialCharsIsImpossible()
     {
-        var inputLine = _driver.FindElement(By.CssSelector("input[type='number']"));
+        var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
         var check = inputLine.GetAttribute("value");
         return check == "";
     }

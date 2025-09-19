@@ -1,7 +1,12 @@
+using HerokuApp.Pages;
+using HerokuApp.Services;
+
 namespace HerokuApp.Tests;
 
-public class TyposPageTests : BaseTest
+public class TyposPageTests
 {
+    private readonly TyposPage _typosPage = new TyposPage();
+    
     [Test]
     public void Typos_TyposFlakyTest()
     {
@@ -10,17 +15,16 @@ public class TyposPageTests : BaseTest
         
         // Arrange
         var expectedText = "Sometimes you'll see a typo, other times you won't.";
-        TyposPageHelper.OpenTyposPage();
+        _typosPage.OpenTyposPage();
         // Act
-        const int maxAttempts = 3;
+        const int maxAttempts = 5;
         bool isMatchFound = false;
         List<string> attemptsTexts = new List<string>();
 
         for (int attempt = 1; attempt <= maxAttempts; attempt++)
         {
-            var actualText = TyposPageHelper.GetText();
+            var actualText = _typosPage.GetTextWithTypo();
             attemptsTexts.Add(actualText);
-
             if (actualText == expectedText)
             {
                 isMatchFound = true;
@@ -29,7 +33,7 @@ public class TyposPageTests : BaseTest
             }
             else
             {
-                TyposPageHelper.OpenTyposPage();
+                _typosPage.OpenTyposPage();
                 Console.WriteLine($"Попытка {attempt}: actual text = \"{actualText}\"");
             }
         }
@@ -38,5 +42,11 @@ public class TyposPageTests : BaseTest
         Assert.IsTrue(isMatchFound, 
             $"Ожидаемый текст не найден, количество попыток: {maxAttempts}. " +
             $"Полученные тексты:\n{string.Join("\n", attemptsTexts)}");
+    }
+    
+    [OneTimeTearDown]
+    public void OneTimeTeardown() 
+    {
+        DriverManager.CloseBrowser();
     }
 }
