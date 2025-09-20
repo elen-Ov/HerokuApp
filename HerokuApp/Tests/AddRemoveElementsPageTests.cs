@@ -1,9 +1,8 @@
 using HerokuApp.Pages;
-using HerokuApp.Services;
 
 namespace HerokuApp.Tests;
 
-public class AddRemoveElementsPageTests
+public class AddRemoveElementsPageTests : BaseTest
 {
     private readonly AddRemovePage _addRemovePage = new AddRemovePage();
     
@@ -20,12 +19,6 @@ public class AddRemoveElementsPageTests
         }
         _addRemovePage.ClickRemoveElementButton();
         // Assert
-        Assert.That(_addRemovePage.CountDeleteElements(), Is.EqualTo(1));
-    }
-    
-    [OneTimeTearDown]
-    public void OneTimeTeardown() 
-    {
-        DriverManager.CloseBrowser();
+        Assert.That(_addRemovePage.CountDeleteElements(), Is.EqualTo(1), "Количество элементов после удаления должно быть равно одному.");
     }
 }

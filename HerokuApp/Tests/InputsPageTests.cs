@@ -1,9 +1,8 @@
 using HerokuApp.Pages;
-using HerokuApp.Services;
 
 namespace HerokuApp.Tests;
 
-public class InputsPageTests
+public class InputsPageTests : BaseTest
 {
     private readonly InputsPage _inputsPage = new InputsPage();
     
@@ -14,8 +13,11 @@ public class InputsPageTests
         _inputsPage.OpenInputsPage();
         // Act
         _inputsPage.ClickArrowUp();
+        var valueAfterFirstClick = _inputsPage.GetInputNumberValue();
+        _inputsPage.ClickArrowUp();
+        var valueAfterSecondClick = _inputsPage.GetInputNumberValue();
         // Assert
-        Assert.That(_inputsPage.CheckArrowUpClick(), Is.True, "После нажатия стрелки вверх ожидаем положительное число");
+        Assert.That(valueAfterSecondClick, Is.EqualTo(valueAfterFirstClick + 1));
     }
     
     [Test]
@@ -24,9 +26,12 @@ public class InputsPageTests
         // Arrange
         _inputsPage.OpenInputsPage();
         // Act
-       _inputsPage.ClickArrowDown();
+        _inputsPage.ClickArrowDown();
+        var valueAfterFirstClick = _inputsPage.GetInputNumberValue();
+        _inputsPage.ClickArrowDown();
+        var valueAfterSecondClick = _inputsPage.GetInputNumberValue();
         // Assert
-        Assert.That(_inputsPage.CheckArrowDownClick(), Is.True, "После нажатия стрелки вниз ожидаем отрицательное число");
+        Assert.That(valueAfterSecondClick, Is.EqualTo(valueAfterFirstClick - 1));
     }
 
     [Test]
@@ -37,7 +42,7 @@ public class InputsPageTests
         // Act
         _inputsPage.InputLetters();
         // Assert
-        Assert.That(_inputsPage.CheckInputOfLettersIsImpossible(), Is.True, "Ввод букв невозможен");
+        Assert.That(_inputsPage.CheckInputOfLettersAndSpecialCharsIsImpossible(), Is.True, "Ввод букв невозможен");
     }
     
     [Test]
@@ -48,12 +53,6 @@ public class InputsPageTests
         // Act
         _inputsPage.InputSpecialChars();
         // Assert
-        Assert.That(_inputsPage.CheckInputOfSpecialCharsIsImpossible(), Is.True, "Ввод спец символов невозможен");
-    }
-    
-    [OneTimeTearDown]
-    public void OneTimeTeardown() 
-    {
-        DriverManager.CloseBrowser();
+        Assert.That(_inputsPage.CheckInputOfLettersAndSpecialCharsIsImpossible(), Is.True, "Ввод спец символов невозможен");
     }
 }

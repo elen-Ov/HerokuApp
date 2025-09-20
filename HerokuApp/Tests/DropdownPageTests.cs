@@ -1,11 +1,11 @@
 using HerokuApp.Pages;
-using HerokuApp.Services;
 
 namespace HerokuApp.Tests;
 
-public class DropdownPageTests
+public class DropdownPageTests : BaseTest
 {
     private readonly DropdownPage _dropdownPage = new DropdownPage();
+    
     [Test]
     public void Dropdown_DropdownOptionsQuantityTest()
     {
@@ -37,11 +37,5 @@ public class DropdownPageTests
         var selectedOption = _dropdownPage.ChooseDropDownOption(0); 
         // Assert
         Assert.That(selectedOption, Is.False, "Надпись Please select an option выбрать нельзя");
-    }
-    
-    [OneTimeTearDown]
-    public void OneTimeTeardown() 
-    {
-        DriverManager.CloseBrowser();
     }
 }

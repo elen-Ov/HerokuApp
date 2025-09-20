@@ -9,6 +9,7 @@ public class SortableDataTablesPage : BasePage
         OpenWelcomePage();
         Driver.FindElement(By.XPath("//a[@href='/tables']")).Click();
     }
+    
     public List<string> GetTablesLineInfo()
     { 
         List<string> personalData = new List<string>();

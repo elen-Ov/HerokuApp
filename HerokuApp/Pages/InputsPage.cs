@@ -13,43 +13,21 @@ public class InputsPage : BasePage
     public void ClickArrowUp()
     {
         var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
-        inputLine.Click();
-        inputLine.Clear();
         inputLine.SendKeys(Keys.ArrowUp);
-    }
-
-    public bool CheckArrowUpClick()
-    {
-        var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
-        var check = inputLine.GetAttribute("value");
-        int number = Convert.ToInt32(check);
-        if (number < 0)
-        {
-            return false;
-        }
-
-        return true;
     }
 
     public void ClickArrowDown()
     {
         var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
-        inputLine.Click();
-        inputLine.Clear();
         inputLine.SendKeys(Keys.ArrowDown);
     }
 
-    public bool CheckArrowDownClick()
+    public int GetInputNumberValue()
     {
         var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
         var check = inputLine.GetAttribute("value");
         int number = Convert.ToInt32(check);
-        if (number >= 0)
-        {
-            return false;
-        }
-
-        return true;
+        return number;
     }
 
     public void InputLetters()
@@ -60,13 +38,6 @@ public class InputsPage : BasePage
         inputLine.SendKeys("aBqWhg");
     }
 
-    public bool CheckInputOfLettersIsImpossible()
-    {
-        var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
-        var check = inputLine.GetAttribute("value");
-        return check == "";
-    }
-
     public void InputSpecialChars()
     {
         var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
@@ -74,8 +45,8 @@ public class InputsPage : BasePage
         inputLine.Clear();
         inputLine.SendKeys("~!@#$%^&*()_+{}|:?><");
     }
-
-    public bool CheckInputOfSpecialCharsIsImpossible()
+    
+    public bool CheckInputOfLettersAndSpecialCharsIsImpossible()
     {
         var inputLine = Driver.FindElement(By.CssSelector("input[type='number']"));
         var check = inputLine.GetAttribute("value");

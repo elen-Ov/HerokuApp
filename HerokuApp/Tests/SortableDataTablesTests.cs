@@ -1,9 +1,8 @@
 using HerokuApp.Pages;
-using HerokuApp.Services;
 
 namespace HerokuApp.Tests;
 
-public class SortableDataTablesTests
+public class SortableDataTablesTests : BaseTest
 {
     private readonly SortableDataTablesPage _sortableDataTablesPage = new SortableDataTablesPage();
     
@@ -20,11 +19,5 @@ public class SortableDataTablesTests
         var actualPersonalData = _sortableDataTablesPage.GetTablesLineInfo();
         // Assert
         Assert.That(actualPersonalData, Is.EquivalentTo(expectedPersonalData), "персональные данные не совпадают");
-    }
-    
-    [OneTimeTearDown]
-    public void OneTimeTeardown() 
-    {
-        DriverManager.CloseBrowser();
     }
 }

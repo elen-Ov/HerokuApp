@@ -1,5 +1,4 @@
 using HerokuApp.Pages;
-using HerokuApp.Services;
 
 namespace HerokuApp.Tests;
 
@@ -46,11 +45,5 @@ public class HoversPageTests
                 $"Профиль {i} не найден, сообщение об ошибке");
             _hoversPage.GoBackToHoverPage();
         }
-    }
-    
-    [OneTimeTearDown]
-    public void OneTimeTeardown() 
-    {
-        DriverManager.CloseBrowser();
     }
 }

@@ -1,9 +1,8 @@
 using HerokuApp.Pages;
-using HerokuApp.Services;
 
 namespace HerokuApp.Tests;
 
-public class TyposPageTests
+public class TyposPageTests : BaseTest
 {
     private readonly TyposPage _typosPage = new TyposPage();
     
@@ -42,11 +41,5 @@ public class TyposPageTests
         Assert.IsTrue(isMatchFound, 
             $"Ожидаемый текст не найден, количество попыток: {maxAttempts}. " +
             $"Полученные тексты:\n{string.Join("\n", attemptsTexts)}");
-    }
-    
-    [OneTimeTearDown]
-    public void OneTimeTeardown() 
-    {
-        DriverManager.CloseBrowser();
     }
 }

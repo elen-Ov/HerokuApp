@@ -1,9 +1,8 @@
 using HerokuApp.Pages;
-using HerokuApp.Services;
 
 namespace HerokuApp.Tests;
 
-public class NotificationMessagesPageTests
+public class NotificationMessagesPageTests : BaseTest
 {
     private readonly NotificationMessagesPage _notificationMessagesPage = new NotificationMessagesPage();
     
@@ -18,11 +17,5 @@ public class NotificationMessagesPageTests
         var actualText = _notificationMessagesPage.GetNotificationMessageText();
         // Assert
         Assert.That(actualText, Is.AnyOf(expectedMessageText1, expectedMessageText2), $"Сообщение должно содержать текст: '{expectedMessageText1}' либо текст: '{expectedMessageText2}', но получено: '{actualText}'.");
-    }
-    
-    [OneTimeTearDown]
-    public void OneTimeTeardown() 
-    {
-        DriverManager.CloseBrowser();
     }
 }
