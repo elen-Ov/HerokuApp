@@ -17,7 +17,7 @@ public class InputsPageTests : BaseTest
         _inputsPage.ClickArrowUp();
         var valueAfterSecondClick = _inputsPage.GetInputNumberValue();
         // Assert
-        Assert.That(valueAfterSecondClick, Is.EqualTo(valueAfterFirstClick + 1));
+        Assert.That(valueAfterSecondClick, Is.EqualTo(valueAfterFirstClick + 1), "Значение после нажатия стрелки вверх не соответсвует ожидаемому.");
     }
     
     [Test]
@@ -31,7 +31,7 @@ public class InputsPageTests : BaseTest
         _inputsPage.ClickArrowDown();
         var valueAfterSecondClick = _inputsPage.GetInputNumberValue();
         // Assert
-        Assert.That(valueAfterSecondClick, Is.EqualTo(valueAfterFirstClick - 1));
+        Assert.That(valueAfterSecondClick, Is.EqualTo(valueAfterFirstClick - 1), "Значение после нажатия стрелки вниз не соответсвует ожидаемому.");
     }
 
     [Test]
