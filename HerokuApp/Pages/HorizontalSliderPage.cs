@@ -24,7 +24,7 @@ public class HorizontalSliderPage : BasePage
         Actions.ClickAndHold(slider)
             .MoveByOffset(xOffset, 0) // так как двигаем только вправо
             .Release()
-            .Build()
+            .Build() // необязателен, явно указываем, что нужно 'скомпилировать' все шаги
             .Perform();
     }
     

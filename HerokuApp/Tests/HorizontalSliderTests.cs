@@ -8,7 +8,7 @@ public class HorizontalSliderTests : BaseTest
 
     [Test]
     public void HorizontalSlider_HorizontalSliderMoveToTheRightTest()
-    {
+    { 
         // Arrange
        _horizontalSliderPage.OpenHorizontalSliderPage();
        var initialSliderValue = _horizontalSliderPage.GetHorizontalSliderStepValue();
