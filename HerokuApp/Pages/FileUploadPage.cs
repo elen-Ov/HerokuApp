@@ -7,7 +7,8 @@ public class FileUploadPage : BasePage
     private readonly By _fileUploadPage = By.XPath("//a[@href='/upload']");
     private readonly By _chooseFileButton = By.Id("file-upload");
     private readonly By _buttonUpload = By.Id("file-submit");
-    private readonly string _uploadDirectory = @"/Users/eovcharova/Downloads";
+    private readonly string _uploadDirectory = Path.Combine
+        (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
     private readonly By _uploadedFile = By.Id("uploaded-files");
     
     public void OpenFileUploadPage()
@@ -16,12 +17,14 @@ public class FileUploadPage : BasePage
         Driver.FindElement(_fileUploadPage).Click();
     }
     
-    public void ChooseFileByClick()
+    public void ChooseFileAndUpload(string fileName)
     {
-        Driver.FindElement(_chooseFileButton).Click();
+        string fullFilePath = Path.Combine(_uploadDirectory, fileName);
+        Driver.FindElement(_chooseFileButton).SendKeys(fullFilePath);
+        ClickUploadButton();
     }
     
-    public void ClickUploadButton()
+    private void ClickUploadButton()
     {
         Driver.FindElement(_buttonUpload).Click();
     }

@@ -17,6 +17,7 @@ public class HorizontalSliderTests : BaseTest
        _horizontalSliderPage.MoveSliderWithMouse(0.5);
         var stepToTheRightValue = _horizontalSliderPage.GetHorizontalSliderStepValue();
         // Assert
-        Assert.That(stepToTheRightValue, Is.EqualTo("2.5"), "Положение ползунка должно сместиться на 2.5.");
+        Assert.That(stepToTheRightValue, Is.EqualTo("2.5"), 
+            "Положение ползунка должно сместиться на 2.5.");
     }
 }

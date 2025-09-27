@@ -42,7 +42,7 @@ public class DynamicControlsPage : BasePage
         return Driver.FindElement(_checkboxRemoveMessage).Text;
     }
     
-    //Явное ожидание (Explicit Wait)
+    //явное ожидание (Explicit Wait)
     public void WaitUntilCheckboxStateIs(bool expectedState)
     {
         var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
@@ -92,8 +92,7 @@ public class DynamicControlsPage : BasePage
     {
         return Driver.FindElement(_inputEnableMessage).Text;
     }
-
-    // Явные ожидания (Explicit Wait)
+    
     // ожидание, что поле станет включённым (атрибут disabled исчезнет)
     public void WaitUntilInputIsEnabled()
     {

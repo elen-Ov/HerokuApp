@@ -5,8 +5,9 @@ namespace HerokuApp.Pages;
 public class FileDownloadPage : BasePage
 {
     private readonly By _fileDownloadPage = By.XPath("//a[@href='/download']");
-    private readonly By _txtFileToLoad = By.XPath("//a[@href='download/test-upload.txt']");
-    private readonly string _downloadDirectory = @"/Users/eovcharova/Downloads";
+    private readonly By _txtFileToLoad = By.XPath("//a[@href='download/test-file.txt']");
+    private readonly string _downloadDirectory = Path.Combine
+     (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
     
     public void OpenFileDownloadPage()
     {
@@ -22,11 +23,10 @@ public class FileDownloadPage : BasePage
     public bool IsFileDownloaded(string fileName)
     {
         string filePath = Path.Combine(_downloadDirectory, fileName);
-        // проверяем, существует ли файл, и удаляем его после проверки
         bool isDownloaded = File.Exists(filePath);
         if (isDownloaded)
         {
-            File.Delete(filePath); // не удаляет
+            File.Delete(filePath);
         }
         return isDownloaded;
     }

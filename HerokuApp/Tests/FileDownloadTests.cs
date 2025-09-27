@@ -8,13 +8,14 @@ public class FileDownloadTests : BaseTest
 
     [Test]
 
-    public void FileDownload_FileDownloadCheck()
+    public void FileDownload_FileDownloadCheckTest()
     {
         // Arrange
         _fileDownloadPage.OpenFileDownloadPage();
+        var fileToLoadName = "test-file.txt";
         // Act
         _fileDownloadPage.DownloadFile();
         // Assert
-        Assert.That(_fileDownloadPage.IsFileDownloaded("test-upload.txt"), Is.True, "Файл не загружен");
+        Assert.That(_fileDownloadPage.IsFileDownloaded(fileToLoadName), Is.True, "Файл не загружен");
     }
 }

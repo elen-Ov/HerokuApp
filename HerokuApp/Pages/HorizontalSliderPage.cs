@@ -6,7 +6,7 @@ public class HorizontalSliderPage : BasePage
 {
     private readonly By _horizontalSliderPage = By.XPath("//a[@href='/horizontal_slider']");
     private readonly By _slider = By.XPath("//div[@class='sliderContainer']//input[@type='range']");
-    private readonly By _rangeValue = By.XPath("//span[@id='range']"); //By.Id("range")
+    private readonly By _rangeValue = By.XPath("//span[@id='range']");
     
     public void OpenHorizontalSliderPage()
     {
