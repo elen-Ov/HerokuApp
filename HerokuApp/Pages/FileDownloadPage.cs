@@ -11,7 +11,6 @@ public class FileDownloadPage : BasePage
     
     public void OpenFileDownloadPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(_fileDownloadPage).Click();
     }
     

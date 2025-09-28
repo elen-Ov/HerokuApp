@@ -6,7 +6,6 @@ public class DropdownPage : BasePage
 {
     public void OpenDropdownPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(By.XPath("//a[@href='/dropdown']")).Click();
     }
     

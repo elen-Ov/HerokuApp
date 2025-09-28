@@ -6,7 +6,6 @@ public class CheckboxesPage : BasePage
 {
     public void OpenCheckboxesPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(By.XPath("//a[@href='/checkboxes']")).Click();
     }
 

@@ -6,7 +6,6 @@ public class AddRemovePage : BasePage
 {
     public void OpenAddRemoveElementsPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(By.XPath("//a[@href='/add_remove_elements/']")).Click();
     }
 

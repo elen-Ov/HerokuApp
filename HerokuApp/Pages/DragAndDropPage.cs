@@ -10,7 +10,6 @@ public class DragAndDropPage : BasePage
     
     public void OpenDragAndDropPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(_dragAndDropPage).Click();
     }
     

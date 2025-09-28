@@ -10,7 +10,6 @@ public class HorizontalSliderPage : BasePage
     
     public void OpenHorizontalSliderPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(_horizontalSliderPage).Click();
     }
 

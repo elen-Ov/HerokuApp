@@ -6,7 +6,6 @@ public class HoversPage : BasePage
 {
     public void OpenHoversPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(By.XPath("//a[@href='/hovers']")).Click();
     }
     

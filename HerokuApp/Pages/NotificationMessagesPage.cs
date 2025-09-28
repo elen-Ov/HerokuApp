@@ -6,7 +6,6 @@ public class NotificationMessagesPage : BasePage
 {
     public void OpenNotificationMessagesPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(By.XPath("//a[@href='/notification_message']")).Click();
     }
     

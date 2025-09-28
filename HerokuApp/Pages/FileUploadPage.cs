@@ -13,7 +13,6 @@ public class FileUploadPage : BasePage
     
     public void OpenFileUploadPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(_fileUploadPage).Click();
     }
     

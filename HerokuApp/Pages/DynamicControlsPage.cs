@@ -16,7 +16,6 @@ public class DynamicControlsPage : BasePage
     
     public void OpenDynamicControlsPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(_dynamicControlsPage).Click();
     }
     
