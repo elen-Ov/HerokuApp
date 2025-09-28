@@ -6,7 +6,6 @@ public class TyposPage : BasePage
 {
     public void OpenTyposPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(By.XPath("//a[@href='/typos']")).Click();
     }
 

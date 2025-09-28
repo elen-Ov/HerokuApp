@@ -2,7 +2,7 @@ using HerokuApp.Pages;
 
 namespace HerokuApp.Tests;
 
-public class HoversPageTests
+public class HoversPageTests : BaseTest
 {
     private readonly HoversPage _hoversPage = new HoversPage();
     

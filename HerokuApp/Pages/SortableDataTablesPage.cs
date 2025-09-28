@@ -6,7 +6,6 @@ public class SortableDataTablesPage : BasePage
 {
     public void OpenSortableDataTablesPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(By.XPath("//a[@href='/tables']")).Click();
     }
     

@@ -6,7 +6,6 @@ public class InputsPage : BasePage
 {
     public void OpenInputsPage()
     {
-        OpenWelcomePage();
         Driver.FindElement(By.XPath("//a[@href='/inputs']")).Click();
     }
 
